@@ -1,0 +1,6 @@
+@Stoqa.ProductCatalog_HostAddress = http://localhost:5171
+
+GET {{Stoqa.ProductCatalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

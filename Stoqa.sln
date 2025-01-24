@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stoqa.OrderCatalog", "Stoqa.OrderCatalog\Stoqa.OrderCatalog.csproj", "{6BC73875-5BA0-4D6F-B434-208F698F62AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stoqa.ProductCatalog", "Stoqa.ProductCatalog\Stoqa.ProductCatalog.csproj", "{DD1A19E7-259A-4AAD-B67B-9D22F8D5F989}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BC73875-5BA0-4D6F-B434-208F698F62AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC73875-5BA0-4D6F-B434-208F698F62AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC73875-5BA0-4D6F-B434-208F698F62AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC73875-5BA0-4D6F-B434-208F698F62AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1A19E7-259A-4AAD-B67B-9D22F8D5F989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1A19E7-259A-4AAD-B67B-9D22F8D5F989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1A19E7-259A-4AAD-B67B-9D22F8D5F989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1A19E7-259A-4AAD-B67B-9D22F8D5F989}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
