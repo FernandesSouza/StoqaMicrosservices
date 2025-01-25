@@ -1,5 +1,3 @@
-using Stoqa.Order.Domain.Entities;
-
 namespace Stoqa.OrderCatalog.Domain.Entities;
 
 public sealed class Return

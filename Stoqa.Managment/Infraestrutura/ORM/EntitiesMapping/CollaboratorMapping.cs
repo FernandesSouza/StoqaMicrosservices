@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Stoqa.Infra.ORM.EntitiesMapping.Base;
-using Stoqa.OrderCatalog.Domain.Entities;
+using Stoqa.Managment.Domain.Entities;
+using Stoqa.Managment.Infraestrutura.ORM.EntitiesMapping.Base;
 
-namespace Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping;
+namespace Stoqa.Managment.Infraestrutura.ORM.EntitiesMapping;
 
 public sealed class CollaboratorMapping : BaseMapping, IEntityTypeConfiguration<Collaborator>
 {

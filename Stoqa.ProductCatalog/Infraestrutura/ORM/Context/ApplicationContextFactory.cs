@@ -9,7 +9,7 @@ public class ApplicationContextFactory : IDesignTimeDbContextFactory<Application
     {
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
         var connectionString =
-            "Data Source=(local)\\SQLEXPRESS;Initial Catalog=Stoqa;Trusted_Connection=True;Encrypt=False;MultipleActiveResultSets=True;Pooling=True;Min Pool Size=10;Max Pool Size=100;";
+            "Data Source=(local)\\SQLEXPRESS;Initial Catalog=StoqaProduct;Trusted_Connection=True;Encrypt=False;MultipleActiveResultSets=True;Pooling=True;Min Pool Size=10;Max Pool Size=100;";
 
         optionsBuilder.UseSqlServer(connectionString);
 

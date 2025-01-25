@@ -1,4 +1,4 @@
-namespace Stoqa.Infra.ORM.EntitiesMapping.Base;
+namespace Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping.Base;
 
 public abstract class BaseMapping(string schema)
 {

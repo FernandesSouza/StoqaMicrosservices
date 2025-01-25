@@ -1,4 +1,4 @@
-namespace Stoqa.Order.Domain.Entities;
+namespace Stoqa.Managment.Domain.Entities;
 
 public sealed class Address
 {

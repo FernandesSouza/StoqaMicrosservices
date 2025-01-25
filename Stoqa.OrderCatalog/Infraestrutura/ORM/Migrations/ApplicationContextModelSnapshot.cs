@@ -22,165 +22,6 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Stoqa.Order.Domain.Entities.Address", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id")
-                        .HasColumnOrder(1);
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("city")
-                        .HasColumnOrder(4);
-
-                    b.Property<string>("Complement")
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("complement")
-                        .HasColumnOrder(6);
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("country")
-                        .HasColumnOrder(9);
-
-                    b.Property<string>("District")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("district")
-                        .HasColumnOrder(3);
-
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("number")
-                        .HasColumnOrder(5);
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("state")
-                        .HasColumnOrder(7);
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("street")
-                        .HasColumnOrder(2);
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("zipCode")
-                        .HasColumnOrder(8);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Address", "Stoqa");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Collaborator", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id")
-                        .HasColumnOrder(1);
-
-                    b.Property<long>("AddressId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("createDate")
-                        .HasColumnOrder(7);
-
-                    b.Property<string>("Document")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("document")
-                        .HasColumnOrder(4);
-
-                    b.Property<byte>("Gender")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("gender")
-                        .HasColumnOrder(6);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("name")
-                        .HasColumnOrder(2);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("varchar(30)")
-                        .HasColumnName("password")
-                        .HasColumnOrder(3);
-
-                    b.Property<byte>("Role")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("role")
-                        .HasColumnOrder(5);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId")
-                        .IsUnique();
-
-                    b.ToTable("Collaborator", "Stoqa");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Customer", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id")
-                        .HasColumnOrder(1);
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("AddressId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("address_id")
-                        .HasColumnOrder(6);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("createDate")
-                        .HasColumnOrder(4);
-
-                    b.Property<byte>("CustomerType")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("customerType")
-                        .HasColumnOrder(5);
-
-                    b.Property<string>("Document")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("document")
-                        .HasColumnOrder(3);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)")
-                        .HasColumnName("name")
-                        .HasColumnOrder(2);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId")
-                        .IsUnique();
-
-                    b.ToTable("Customer", "Stoqa");
-                });
-
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Orders", b =>
                 {
                     b.Property<long>("Id")
@@ -195,59 +36,16 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(10)")
                         .HasColumnName("code")
-                        .HasColumnOrder(3);
-
-                    b.Property<Guid>("CollaboratorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("collaboratorId")
                         .HasColumnOrder(2);
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime")
                         .HasColumnName("createDate")
-                        .HasColumnOrder(4);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CollaboratorId")
-                        .IsUnique();
-
-                    b.ToTable("Order", "Stoqa");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.PackagingComposition", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<int>("Level")
-                        .HasColumnType("int")
-                        .HasColumnName("level")
-                        .HasColumnOrder(1);
-
-                    b.Property<byte>("Packing")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("packing")
-                        .HasColumnOrder(4);
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("productId")
                         .HasColumnOrder(3);
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int")
-                        .HasColumnName("quantity")
-                        .HasColumnOrder(2);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("PackagingComposition", "Stoqa");
+                    b.ToTable("Order", "Stoqa");
                 });
 
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Product", b =>
@@ -257,25 +55,9 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
                         .HasColumnName("id")
                         .HasColumnOrder(1);
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit")
-                        .HasColumnName("active")
-                        .HasColumnOrder(6);
-
                     b.Property<string>("Code")
                         .HasColumnType("varchar(50)")
                         .HasColumnName("code")
-                        .HasColumnOrder(5);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("createDate")
-                        .HasColumnOrder(7);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)")
-                        .HasColumnName("description")
                         .HasColumnOrder(4);
 
                     b.Property<string>("Name")
@@ -292,6 +74,33 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Product", "Stoqa");
+                });
+
+            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.ProductOrder", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("order_id")
+                        .HasColumnOrder(2);
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("product_id")
+                        .HasColumnOrder(3);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("ProductOrder", "Stoqa");
                 });
 
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Return", b =>
@@ -339,9 +148,15 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Sale", b =>
                 {
                     b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Invoice")
                         .IsRequired()
@@ -408,53 +223,21 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
                     b.ToTable("Transport", "Stoqa");
                 });
 
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Collaborator", b =>
-                {
-                    b.HasOne("Stoqa.Order.Domain.Entities.Address", "Address")
-                        .WithOne()
-                        .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Collaborator", "AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Customer", b =>
-                {
-                    b.HasOne("Stoqa.Order.Domain.Entities.Address", "Address")
-                        .WithOne()
-                        .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Customer", "AddressId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Orders", b =>
-                {
-                    b.HasOne("Stoqa.OrderCatalog.Domain.Entities.Collaborator", "Collaborator")
-                        .WithOne()
-                        .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Orders", "CollaboratorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Collaborator");
-                });
-
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.PackagingComposition", b =>
-                {
-                    b.HasOne("Stoqa.OrderCatalog.Domain.Entities.Product", null)
-                        .WithMany("PackingCompositions")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Product", b =>
                 {
+                    b.HasOne("Stoqa.OrderCatalog.Domain.Entities.ProductOrder", null)
+                        .WithOne("Product")
+                        .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Product", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.ProductOrder", b =>
+                {
                     b.HasOne("Stoqa.OrderCatalog.Domain.Entities.Orders", null)
-                        .WithMany("Product")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("ProductOrders")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -477,12 +260,6 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
 
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Sale", b =>
                 {
-                    b.HasOne("Stoqa.OrderCatalog.Domain.Entities.Customer", "Customer")
-                        .WithOne()
-                        .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Sale", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Stoqa.OrderCatalog.Domain.Entities.Orders", null)
                         .WithOne("Sale")
                         .HasForeignKey("Stoqa.OrderCatalog.Domain.Entities.Sale", "OrderId")
@@ -495,23 +272,22 @@ namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Customer");
-
                     b.Navigation("Transport");
                 });
 
             modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Orders", b =>
                 {
-                    b.Navigation("Product");
+                    b.Navigation("ProductOrders");
 
                     b.Navigation("Return");
 
                     b.Navigation("Sale");
                 });
 
-            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.Product", b =>
+            modelBuilder.Entity("Stoqa.OrderCatalog.Domain.Entities.ProductOrder", b =>
                 {
-                    b.Navigation("PackingCompositions");
+                    b.Navigation("Product")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

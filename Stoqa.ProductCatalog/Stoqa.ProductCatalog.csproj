@@ -24,7 +24,7 @@
       <Folder Include="Infraestrutura\ORM\Migrations\" />
       <Folder Include="Infraestrutura\ORM\UoW\" />
       <Folder Include="Infraestrutura\Repository\BaseRepository\" />
-      <Folder Include="Ioc\Container\" />
+      <Folder Include="IoC\Container\" />
     </ItemGroup>
 
 </Project>

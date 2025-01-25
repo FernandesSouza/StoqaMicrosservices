@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Stoqa.Infra.ORM.EntitiesMapping.Base;
 using Stoqa.OrderCatalog.Domain.Entities;
+using Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping.Base;
 
 namespace Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping;
 
@@ -40,12 +40,6 @@ public sealed class SaleMapping : BaseMapping, IEntityTypeConfiguration<Sale>
         builder.HasOne(s => s.Transport)
             .WithOne()
             .HasForeignKey<Sale>(s => s.OrderId)
-            .OnDelete(DeleteBehavior.Restrict)
-            .IsRequired();
-
-        builder.HasOne(s => s.Customer)
-            .WithOne()
-            .HasForeignKey<Sale>(s => s.Id)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
     }

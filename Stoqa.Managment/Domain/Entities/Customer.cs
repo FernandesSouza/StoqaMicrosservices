@@ -1,7 +1,6 @@
-using Stoqa.Order.Domain.Entities;
-using Stoqa.Order.Domain.Enums;
+using Stoqa.Managment.Domain.Enums;
 
-namespace Stoqa.OrderCatalog.Domain.Entities;
+namespace Stoqa.Managment.Domain.Entities;
 
 public sealed class Customer
 {

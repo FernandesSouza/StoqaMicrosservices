@@ -334,3 +334,4 @@ C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\St
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\Stoqa.OrderCatalog.pdb
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\Stoqa.OrderCatalog.genruntimeconfig.cache
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\ref\Stoqa.OrderCatalog.dll
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\Stoqa.OrderCatalog.sourcelink.json

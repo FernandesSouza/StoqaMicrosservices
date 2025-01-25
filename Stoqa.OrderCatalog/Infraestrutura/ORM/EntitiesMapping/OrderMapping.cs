@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Stoqa.Infra.ORM.EntitiesMapping.Base;
-using Stoqa.Order.Domain.Entities;
 using Stoqa.OrderCatalog.Domain.Entities;
+using Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping.Base;
 
 namespace Stoqa.OrderCatalog.Infraestrutura.ORM.EntitiesMapping;
 
@@ -18,20 +17,15 @@ public sealed class OrderMapping : BaseMapping, IEntityTypeConfiguration<Orders>
             .HasColumnName("id")
             .HasColumnOrder(1);
 
-        builder.Property(o => o.CollaboratorId)
-            .HasColumnType("uniqueidentifier")
-            .HasColumnName("collaboratorId")
-            .HasColumnOrder(2);
-
         builder.Property(o => o.Code)
             .HasColumnType("varchar(10)")
             .HasColumnName("code")
-            .HasColumnOrder(3);
+            .HasColumnOrder(2);
 
         builder.Property(o => o.CreateDate)
             .HasColumnType("datetime")
             .HasColumnName("createDate")
-            .HasColumnOrder(4);
+            .HasColumnOrder(3);
 
         builder.HasOne(o => o.Sale)
             .WithOne()
@@ -45,15 +39,9 @@ public sealed class OrderMapping : BaseMapping, IEntityTypeConfiguration<Orders>
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
 
-        builder.HasMany(o => o.Product)
+        builder.HasMany(o => o.ProductOrders)
             .WithOne()
-            .HasForeignKey(p => p.Id)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-        builder.HasOne(o => o.Collaborator)
-            .WithOne()
-            .HasForeignKey<Orders>(o => o.CollaboratorId)
+            .HasForeignKey(p => p.OrderId)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
     }
