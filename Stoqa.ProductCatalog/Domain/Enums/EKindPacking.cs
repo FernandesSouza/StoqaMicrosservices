@@ -4,5 +4,6 @@ public enum EKindPacking
 {
     Unit = 1,
     Bag,
-    Box
+    Box,
+    Kit
 }

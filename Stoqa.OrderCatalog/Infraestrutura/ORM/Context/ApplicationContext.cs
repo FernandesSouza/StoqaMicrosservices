@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Stoqa.Infra.ORM.Context;
+namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Context;
 
 public sealed class ApplicationContext : DbContext
 {

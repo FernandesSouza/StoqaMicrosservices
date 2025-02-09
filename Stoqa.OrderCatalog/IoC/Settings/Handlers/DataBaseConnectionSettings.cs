@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Stoqa.Domain.Providers;
-using Stoqa.Infra.ORM.Context;
+using Stoqa.OrderCatalog.Domain.Providers;
+using Stoqa.OrderCatalog.Infraestrutura.ORM.Context;
 
 namespace Stoqa.OrderCatalog.Ioc.Settings.Handlers;
 

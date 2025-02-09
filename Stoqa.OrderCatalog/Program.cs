@@ -1,3 +1,4 @@
+using Stoqa.OrderCatalog.ApplicationService.RabbitMq;
 using Stoqa.OrderCatalog.Ioc;
 using Stoqa.OrderCatalog.Ioc.Settings;
 using Stoqa.OrderCatalog.Ioc.Settings.Handlers;
@@ -10,7 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSettingsControl(configuration);
 builder.Services.AddSwaggerGen();
+
+await builder.Services.RabbitFactory(configuration);
+
 builder.Services.AddInversionOfControlHandler();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

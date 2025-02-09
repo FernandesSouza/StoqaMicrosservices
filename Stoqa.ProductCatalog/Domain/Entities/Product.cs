@@ -10,4 +10,5 @@ public sealed class Product
     public bool Active { get; init; }
     public required string Description { get; init; }
     public string? Code { get; init; }
+    public List<StockItem> StockItems { get; init; } = [];
 }

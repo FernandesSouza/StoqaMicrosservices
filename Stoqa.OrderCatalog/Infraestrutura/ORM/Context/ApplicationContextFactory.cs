@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Stoqa.Infra.ORM.Context;
 
 namespace Stoqa.OrderCatalog.Infraestrutura.ORM.Context;
 
@@ -8,9 +7,13 @@ public class ApplicationContextFactory : IDesignTimeDbContextFactory<Application
 {
     public ApplicationContext CreateDbContext(string[] args)
     {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
+            .Build();
+
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-        var connectionString =
-            "Data Source=(local)\\SQLEXPRESS;Initial Catalog=StoqaOrder;Trusted_Connection=True;Encrypt=False;MultipleActiveResultSets=True;Pooling=True;Min Pool Size=10;Max Pool Size=100;";
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
 
         optionsBuilder.UseSqlServer(connectionString);
 

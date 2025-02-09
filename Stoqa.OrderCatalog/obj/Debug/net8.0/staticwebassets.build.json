@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "rfQYv9v14726CdoZFSy4CLUlsJYX/iUZ4RRPpBprBRY=",
+  "Hash": "n/XHndSiVadNJ63+OUwS7xklfCKwAEXpzveAmO5lyNw=",
   "Source": "Stoqa.OrderCatalog",
   "BasePath": "_content/Stoqa.OrderCatalog",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj",
+      "Version": 2,
+      "Source": "Stoqa.ProductCatalog",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

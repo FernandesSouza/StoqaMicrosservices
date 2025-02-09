@@ -335,3 +335,11 @@ C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\St
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\Stoqa.OrderCatalog.genruntimeconfig.cache
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\ref\Stoqa.OrderCatalog.dll
 C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\obj\Debug\net8.0\Stoqa.OrderCatalog.sourcelink.json
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Stoqa.ProductCatalog.deps.json
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Stoqa.ProductCatalog.runtimeconfig.json
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Stoqa.ProductCatalog.exe
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Stoqa.ProductCatalog.dll
+C:\Users\igorf\OneDrive\Área de Trabalho\Challenges\StoqaMicrosservice\Stoqa\Stoqa.OrderCatalog\bin\Debug\net8.0\Stoqa.ProductCatalog.pdb

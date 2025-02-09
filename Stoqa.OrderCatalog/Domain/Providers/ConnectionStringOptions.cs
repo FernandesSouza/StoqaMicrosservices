@@ -1,4 +1,4 @@
-namespace Stoqa.Domain.Providers;
+namespace Stoqa.OrderCatalog.Domain.Providers;
 
 public sealed class ConnectionStringOptions
 {

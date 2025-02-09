@@ -22,6 +22,38 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.Deposit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit")
+                        .HasColumnName("active")
+                        .HasColumnOrder(4);
+
+                    b.Property<string>("DepositName")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("product_id")
+                        .HasColumnOrder(2);
+
+                    b.Property<string>("Identifier")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("identifier")
+                        .HasColumnOrder(3);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Deposit", "Stoqa");
+                });
+
             modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.PackagingComposition", b =>
                 {
                     b.Property<long>("Id")
@@ -104,6 +136,40 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                     b.ToTable("Product", "Stoqa");
                 });
 
+            modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.StockItem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("DepositId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("deposit_id")
+                        .HasColumnOrder(4);
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("product_id")
+                        .HasColumnOrder(2);
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("quantity")
+                        .HasColumnOrder(3);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepositId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("StockItem", "Stoqa");
+                });
+
             modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.PackagingComposition", b =>
                 {
                     b.HasOne("Stoqa.ProductCatalog.Domain.Entities.Product", null)
@@ -113,9 +179,35 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.StockItem", b =>
+                {
+                    b.HasOne("Stoqa.ProductCatalog.Domain.Entities.Deposit", "Deposit")
+                        .WithMany("StockItems")
+                        .HasForeignKey("DepositId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stoqa.ProductCatalog.Domain.Entities.Product", "Product")
+                        .WithMany("StockItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Deposit");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.Deposit", b =>
+                {
+                    b.Navigation("StockItems");
+                });
+
             modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.Product", b =>
                 {
                     b.Navigation("PackingCompositions");
+
+                    b.Navigation("StockItems");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,5 @@
 using Stoqa.OrderCatalog.Ioc.Settings.Handlers;
-using Stoqa.Settings.Handlers;
+using Stoqa.OrderCatalog.IoC.Settings.Handlers;
 
 namespace Stoqa.OrderCatalog.Ioc.Settings;
 

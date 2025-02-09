@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
-using Stoqa.Domain.Providers;
+using Stoqa.OrderCatalog.Domain.Providers;
 
-namespace Stoqa.Settings.Handlers;
+namespace Stoqa.OrderCatalog.IoC.Settings.Handlers;
 
 public static class ProviderSettings
 {

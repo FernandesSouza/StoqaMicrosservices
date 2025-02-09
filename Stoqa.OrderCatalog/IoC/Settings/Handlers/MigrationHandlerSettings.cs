@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Stoqa.Infra.ORM.Context;
+using Stoqa.OrderCatalog.Infraestrutura.ORM.Context;
 
 namespace Stoqa.OrderCatalog.Ioc.Settings.Handlers;
 

@@ -31,5 +31,15 @@ public sealed class ProductMapping : BaseMapping, IEntityTypeConfiguration<Produ
             .HasColumnType("varchar(50)")
             .HasColumnName("code")
             .HasColumnOrder(4);
+
+        builder.Property(p => p.Active)
+            .HasColumnType("bit")
+            .HasColumnName("active")
+            .HasColumnOrder(5);
+
+        builder.Property(p => p.Description)
+            .HasColumnType("varchar(150)")
+            .HasColumnName("description")
+            .HasColumnOrder(6);
     }
 }

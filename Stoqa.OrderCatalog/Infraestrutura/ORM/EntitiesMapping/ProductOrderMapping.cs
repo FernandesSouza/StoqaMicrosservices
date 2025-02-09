@@ -26,11 +26,5 @@ public sealed class ProductOrderMapping : BaseMapping, IEntityTypeConfiguration<
             .HasColumnType("bigint")
             .HasColumnName("product_id")
             .HasColumnOrder(3);
-
-        builder.HasOne(s => s.Product)
-            .WithOne()
-            .HasForeignKey<Product>(s => s.Id)
-            .OnDelete(DeleteBehavior.Restrict)
-            .IsRequired();
     }
 }

@@ -9,7 +9,7 @@ public sealed class OrderMapping : BaseMapping, IEntityTypeConfiguration<Orders>
 {
     public void Configure(EntityTypeBuilder<Orders> builder)
     {
-        builder.ToTable(nameof(Order), Schema);
+        builder.ToTable(nameof(Orders), Schema);
         builder.HasKey(o => o.Id);
 
         builder.Property(o => o.Id)
@@ -23,9 +23,14 @@ public sealed class OrderMapping : BaseMapping, IEntityTypeConfiguration<Orders>
             .HasColumnOrder(2);
 
         builder.Property(o => o.CreateDate)
-            .HasColumnType("datetime")
+            .HasColumnType("datetime2")
             .HasColumnName("createDate")
             .HasColumnOrder(3);
+        
+        builder.Property(o => o.Status)
+            .HasColumnType("tinyint")
+            .HasColumnName("status")
+            .HasColumnOrder(4);
 
         builder.HasOne(o => o.Sale)
             .WithOne()
@@ -42,7 +47,7 @@ public sealed class OrderMapping : BaseMapping, IEntityTypeConfiguration<Orders>
         builder.HasMany(o => o.ProductOrders)
             .WithOne()
             .HasForeignKey(p => p.OrderId)
-            .OnDelete(DeleteBehavior.Restrict)
+            .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
     }
 }
