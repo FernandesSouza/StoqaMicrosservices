@@ -25,6 +25,13 @@ public static class RabbitProductConnection
         await channel.QueueBindAsync(RabbitCatalogNames.QueueNameConference, RabbitCatalogNames.ExchangeName,
             RabbitCatalogNames.ConferenceKey);
 
+        await channel.ExchangeDeclareAsync(RabbitCatalogNames.ExchangeNameProduct, ExchangeType.Topic);
+
+        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductRegisterSync, true, false);
+        await channel.QueueBindAsync(RabbitCatalogNames.QueueProductRegisterSync,
+            RabbitCatalogNames.ExchangeNameProduct,
+            RabbitCatalogNames.ProductRegisterSyncKey);
+
         services.AddSingleton(channel);
     }
 }

@@ -9,8 +9,5 @@ public static class ProviderSettings
     {
         services.AddTransient(sp => sp.GetService<IOptionsMonitor<ConnectionStringOptions>>()!.CurrentValue);
         services.Configure<ConnectionStringOptions>(configuration.GetSection(ConnectionStringOptions.SectionName));
-        
-        services.AddTransient(sp => sp.GetService<IOptionsMonitor<HttpUrlConnectionOptions>>()!.CurrentValue);
-        services.Configure<HttpUrlConnectionOptions>(configuration.GetSection(HttpUrlConnectionOptions.SectionName));
     }
 }

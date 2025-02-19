@@ -5,23 +5,18 @@ using RabbitMQ.Client.Events;
 using Stoqa.ProductCatalog.ApplicationService.DTOs.RabbitDtos;
 using Stoqa.ProductCatalog.ApplicationService.RabbitMqService.Constants;
 
-namespace Stoqa.ProductCatalog.ApplicationService.RabbitMqService;
+namespace Stoqa.ProductCatalog.ApplicationService.RabbitMqService.Consumers;
 
 public class OrderConsumer : BackgroundService
 {
-    private readonly IConfiguration _configuration;
     private IChannel _channel;
-    public IServiceProvider ServiceProvider;
     private ILogger<OrderConsumer> _logger;
 
     public OrderConsumer(
-        IConfiguration configuration,
         IChannel channel,
-        IServiceProvider serviceProvider, ILogger<OrderConsumer> logger)
+        ILogger<OrderConsumer> logger)
     {
-        _configuration = configuration;
         _channel = channel;
-        ServiceProvider = serviceProvider;
         _logger = logger;
     }
 
@@ -29,7 +24,7 @@ public class OrderConsumer : BackgroundService
     {
         var consumer = new AsyncEventingBasicConsumer(_channel);
 
-        consumer.ReceivedAsync += async (sender, eventArgs) =>
+        consumer.ReceivedAsync += async (_, eventArgs) =>
         {
             var body = eventArgs.Body.ToArray();
             var contentString = Encoding.UTF8.GetString(body);
@@ -47,8 +42,10 @@ public class OrderConsumer : BackgroundService
         return Task.CompletedTask;
     }
 
-    private async Task ProcessMessage(OrderInventoryMessage @event)
+    //Falta logica do que fazer com a ordem
+    private Task ProcessMessage(OrderInventoryMessage @event)
     {
-        _logger.LogInformation(@event.Code);
+       _logger.LogInformation(@event.Code);
+       return Task.CompletedTask;
     }
 }

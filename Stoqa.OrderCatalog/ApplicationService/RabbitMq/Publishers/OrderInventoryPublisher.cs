@@ -14,6 +14,7 @@ public sealed class OrderInventoryPublisher(
     public async Task PublishOrder(OrderInventoryMessage message)
     {
         var jsonMessage = JsonConvert.SerializeObject(message);
+        
         var messageBodyBytes = Encoding.UTF8.GetBytes(jsonMessage);
 
         await channel.BasicPublishAsync(

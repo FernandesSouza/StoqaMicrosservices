@@ -1,9 +1,7 @@
 using Stoqa.ProductCatalog.ApplicationService.Dtos.ProductDtos.Request;
 using Stoqa.ProductCatalog.ApplicationService.Interfaces.MapperContracts;
 using Stoqa.ProductCatalog.ApplicationService.Interfaces.ServicesContracts;
-using Stoqa.ProductCatalog.ApplicationService.Services.ObserverNotification;
 using Stoqa.ProductCatalog.Domain.Entities;
-using Stoqa.ProductCatalog.Domain.Enums;
 using Stoqa.ProductCatalog.Domain.Interfces;
 using Stoqa.ProductCatalog.Infraestrutura.Interfaces.RepositoryContracts;
 
@@ -14,7 +12,7 @@ public sealed class ProductCommandService(
     IProductMapper productMapper,
     INotficationHandler notificationHandler,
     IValidate<Product> validate,
-    ProductNotifier productNotifier)
+    IProductSyncService syncService)
     : BaseService<Product>(
         notificationHandler, validate), IProductCommandService
 {
@@ -28,11 +26,7 @@ public sealed class ProductCommandService(
         var result = await productRepository.SaveAsync(product);
 
         if (!result) return false;
-        await productNotifier.NotificationCreateObserversAsync(new ProductEvent
-        {
-            ProductTypeEvent = EProductTypeEvent.Created,
-            Product = product
-        });
+        await syncService.SyncToProductAsync(product);
         return true;
     }
 }

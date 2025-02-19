@@ -2,7 +2,7 @@ namespace Stoqa.OrderCatalog.Domain.Entities;
 
 public sealed class Product
 {
-    public long Id { get; init; }
+    public long Id { get; set; }
     public decimal Price { get; init; }
     public required string Name { get; init; }
     public bool Active { get; init; }

@@ -1,4 +1,5 @@
 using Stoqa.OrderCatalog.ApplicationService.RabbitMq;
+using Stoqa.OrderCatalog.ApplicationService.RabbitMq.Consumers;
 using Stoqa.OrderCatalog.Ioc;
 using Stoqa.OrderCatalog.Ioc.Settings;
 using Stoqa.OrderCatalog.Ioc.Settings.Handlers;
@@ -11,8 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSettingsControl(configuration);
 builder.Services.AddSwaggerGen();
-
 await builder.Services.RabbitFactory(configuration);
+builder.Services.AddScoped<ProductConsumer>();
+builder.Services.AddHostedService<ProductConsumer>();
 
 builder.Services.AddInversionOfControlHandler();
 

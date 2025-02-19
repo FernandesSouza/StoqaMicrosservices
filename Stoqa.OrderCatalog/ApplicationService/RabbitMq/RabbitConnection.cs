@@ -15,7 +15,7 @@ public static class RabbitConnection
             UserName = RabbitCatalogNames.UserName,
             Password = RabbitCatalogNames.Password
         };
-    
+
         var connection = await factory.CreateConnectionAsync();
 
         var channel = await connection.CreateChannelAsync();
@@ -24,6 +24,13 @@ public static class RabbitConnection
         await channel.QueueDeclareAsync(RabbitCatalogNames.QueueNameConference, true, false);
         await channel.QueueBindAsync(RabbitCatalogNames.QueueNameConference, RabbitCatalogNames.ExchangeName,
             RabbitCatalogNames.ConferenceKey);
+
+        await channel.ExchangeDeclareAsync(RabbitCatalogNames.ExchangeNameProduct, ExchangeType.Topic);
+
+        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductRegisterSync, true, false);
+        await channel.QueueBindAsync(RabbitCatalogNames.QueueProductRegisterSync,
+            RabbitCatalogNames.ExchangeNameProduct,
+            RabbitCatalogNames.ProductRegisterSyncKey);
 
         services.AddSingleton(channel);
     }
