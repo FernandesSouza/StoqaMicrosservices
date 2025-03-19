@@ -12,10 +12,10 @@ public static class InversionOfControlHandler
         services.AddScoped<ApplicationContext>()
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<INotficationOrderHandler, NotificationOrderHandler>()
-            .AddPublisherContainer()
             .AddMapperContainer()
             .AddRepositoryContainer()
             .AddServiceContainer()
             .AddValidations()
+            .AddPublisherContainer()
         ;
 }

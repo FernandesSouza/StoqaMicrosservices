@@ -7,6 +7,7 @@ public static class RepositoryContainer
 {
     public static IServiceCollection AddRepositoryContainer(this IServiceCollection service) =>
         service.AddScoped<IProductRepository, ProductRepository>()
-            .AddScoped<IPackagingCompositionRepository, PackagingCompositionRepository>()
-            .AddScoped<IStockItemRepository, StockItemRepository>();
+            .AddScoped<IStockItemRepository, StockItemRepository>()
+            .AddScoped<IItemRepository, ItemRepository>()
+            .AddScoped<IDepositRepository, DepositRepository>();
 }

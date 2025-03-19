@@ -4,5 +4,8 @@ public sealed class ProductOrder
 {
     public long Id { get; init; }
     public long OrderId { get; init; }
-    public long ProductId { get; init; }
+    public required long ProductId { get; init; }
+    public Product Product { get; init; }
+    
+    public int QuantityOrdered { get; init; }
 }   

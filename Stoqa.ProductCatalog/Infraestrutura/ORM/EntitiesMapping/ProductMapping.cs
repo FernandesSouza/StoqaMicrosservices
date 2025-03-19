@@ -47,10 +47,5 @@ public sealed class ProductMapping : BaseMapping, IEntityTypeConfiguration<Produ
             .HasColumnName("createDate")
             .HasColumnOrder(7);
 
-        builder.HasMany(p => p.PackingCompositions)
-            .WithOne()
-            .HasForeignKey(pc => pc.ProductId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
     }
 }

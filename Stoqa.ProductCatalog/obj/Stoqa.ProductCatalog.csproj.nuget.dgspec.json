@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj": {}
+    "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\StoqaMicrosservices\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj": {
+    "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\StoqaMicrosservices\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj",
+        "projectUniqueName": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\StoqaMicrosservices\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj",
         "projectName": "Stoqa.ProductCatalog",
-        "projectPath": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj",
+        "projectPath": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\StoqaMicrosservices\\Stoqa.ProductCatalog\\Stoqa.ProductCatalog.csproj",
         "packagesPath": "C:\\Users\\igorf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\Stoqa\\Stoqa.ProductCatalog\\obj\\",
+        "outputPath": "C:\\Users\\igorf\\OneDrive\\Área de Trabalho\\Challenges\\StoqaMicrosservice\\StoqaMicrosservices\\Stoqa.ProductCatalog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\igorf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -48,27 +48,43 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            },
+            "Polly.Contrib.WaitAndRetry": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Polly.Core": {
+              "target": "Package",
+              "version": "[8.5.2, )"
             },
             "RabbitMQ.Client": {
               "target": "Package",

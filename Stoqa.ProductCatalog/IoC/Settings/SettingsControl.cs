@@ -8,5 +8,6 @@ public static class SettingsControl
     {
         service.AddProviderSettings(configuration);
         service.AddDataBaseConnectionSettings();
+        service.AddRedisSettings();
     }
 }

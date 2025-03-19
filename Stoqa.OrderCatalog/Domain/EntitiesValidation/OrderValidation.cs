@@ -1,5 +1,4 @@
 using Stoqa.OrderCatalog.Domain.Entities;
-using Stoqa.ProductCatalog.Domain.Handlers.ValidationHandler;
 
 namespace Stoqa.OrderCatalog.Domain.EntitiesValidation;
 

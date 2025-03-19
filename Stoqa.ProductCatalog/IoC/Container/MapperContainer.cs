@@ -8,5 +8,7 @@ public static class MapperContainer
 {
     public static IServiceCollection AddMapperContainer(this IServiceCollection service) =>
         service.AddScoped<IProductMapper, ProductMapper>()
-            .AddScoped<IPackagingCompositionMapper, PackagingCompositionMapper>();
+            .AddScoped<IItemMapper, ItemMapper>()
+            .AddScoped<IStockItemMapper, StockItemMapper>()
+            .AddScoped<IDepositMapper, DepositMapper>();
 }

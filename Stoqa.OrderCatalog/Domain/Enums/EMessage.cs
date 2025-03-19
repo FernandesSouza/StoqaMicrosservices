@@ -11,5 +11,7 @@ public enum EMessage : byte
     InvalidValue,
     
     [Description("{0} não permitido ou erro no servidor")]
-    ErrorConferenceUpdate
+    ErrorConferenceUpdate,
+    
+   
 }

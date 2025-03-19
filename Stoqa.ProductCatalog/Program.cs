@@ -13,17 +13,26 @@ builder.Services.AddSettingsControl(configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 await builder.Services.RabbitFactory(configuration);
+
+   builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.InstanceName = "DataBase_Conference";
+    options.Configuration = "localhost:6379";
+});
+
 builder.Services.AddScoped<OrderConsumer>();
 builder.Services.AddHostedService<OrderConsumer>();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(7000);
+});
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger(); 
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

@@ -12,8 +12,7 @@ public sealed class ProductQueryService(
 {
     public async Task<List<ProductSimpleResponse>> FindAllAsync()
     {
-        var productList = await productRepository.FindAllAsync(
-            p => p.Include(pk => pk.PackingCompositions));
+        var productList = await productRepository.FindAllAsync();
 
         return productList.Count > 0
             ? productMapper.DomainToSimpleResponseDto(productList)

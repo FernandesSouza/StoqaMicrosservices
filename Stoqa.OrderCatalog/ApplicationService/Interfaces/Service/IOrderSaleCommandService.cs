@@ -5,5 +5,6 @@ namespace Stoqa.OrderCatalog.ApplicationService.Interfaces.Service;
 public interface IOrderSaleCommandService
 {
     Task<bool> RegisterAsync(OrderSaleRegisterRequest saleRegisterRequest);
-    Task<bool> UpdateConferenceStatus(long orderId);
+    Task<bool> UpdateConferenceStatusAsync(long orderId);
+   
 }

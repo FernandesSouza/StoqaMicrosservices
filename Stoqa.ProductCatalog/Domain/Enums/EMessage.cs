@@ -9,7 +9,9 @@ public enum EMessage : byte
 
     [Description("{0} com valor lógico inválido.")]
     InvalidValue,
-    
-    [Description("{0} não permitido ou erro no servidor")]
-    ErrorConferenceUpdate
+
+    [Description("Item já foi lido")] ItemFound,
+
+    [Description("Item já foi lido em outra ordem de venda")]
+    ItemFoundOrder
 }

@@ -15,4 +15,11 @@ public class NotificationHandler : INotficationHandler
 
     public void CreateNotifications(IEnumerable<DomainNotification> domainNotification) =>
         _notifications.AddRange(domainNotification);
+
+    public bool CreateNotification(string key, string value)
+    {
+        _notifications.Add(new DomainNotification(key, value));
+
+        return false;
+    }
 }

@@ -8,4 +8,6 @@ public interface INotficationHandler
     bool HasNotification();
     void CreateNotification(DomainNotification domainNotification);
     void CreateNotifications(IEnumerable<DomainNotification> notifications);
+    
+    bool CreateNotification(string key, string value);
 }

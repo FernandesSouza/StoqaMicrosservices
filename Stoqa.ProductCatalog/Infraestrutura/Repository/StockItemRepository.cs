@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Stoqa.ProductCatalog.Domain.Entities;
 using Stoqa.ProductCatalog.Domain.PaginationHandler;
@@ -14,10 +15,32 @@ public sealed class StockItemRepository(
     IPaginationQueryService<StockItem> paginationQueryService)
     : BaseRepository<StockItem>(context), IStockItemRepository
 {
+    private const int StandardQuantity = 0;
     public async Task<bool> SaveAsync(StockItem stockItem)
     {
         await DbSetContext.AddAsync(stockItem);
         return await SaveInDataBaseAsync();
+    }
+
+    public async Task<bool> UpdateAsync(
+        Expression<Func<StockItem, bool>> predicate,
+        int quantity)
+    {
+        var result = await DbSetContext.Where(predicate)
+            .ExecuteUpdateAsync(setter => setter.SetProperty(o => o.QuantityReserved, quantity)) >= StandardQuantity;
+
+        return result;
+    }
+
+    public async Task<StockItem?> FindByPredicate(Expression<Func<StockItem, bool>> predicate,
+        Func<IQueryable<StockItem>, IIncludableQueryable<StockItem, object>>? include = null)
+    {
+        IQueryable<StockItem> query = DbSetContext;
+
+        if (include is not null)
+            query = include(query);
+
+        return await query.FirstOrDefaultAsync(predicate);
     }
 
     public async Task<PageList<StockItem>> FindAllWithPagination(

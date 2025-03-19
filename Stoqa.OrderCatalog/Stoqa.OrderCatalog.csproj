@@ -5,33 +5,51 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>Stoqa.OrderCatalog</RootNamespace>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+        <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.13">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Polly" Version="8.5.2" />
+        <PackageReference Include="Polly.Contrib.WaitAndRetry" Version="1.1.1" />
+        <PackageReference Include="Polly.Core" Version="8.5.2" />
         <PackageReference Include="RabbitMQ.Client" Version="7.1.0-alpha.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ApplicationService\Services\ProductService\" />
       <Folder Include="Extensions\" />
-      <Folder Include="Filters\" />
       <Folder Include="Infraestrutura\ORM\Migrations\" />
       <Folder Include="Infraestrutura\ORM\UoW\" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Stoqa.ProductCatalog\Stoqa.ProductCatalog.csproj" />
+        <None Update="appsettings.json">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <TargetPath>config/OrderCatalog.appsettings.json</TargetPath>
+        </None>
+        <None Update="appsettings.Development.json">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <TargetPath>config/OrderCatalog.appsettings.Development.json</TargetPath>
+        </None>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

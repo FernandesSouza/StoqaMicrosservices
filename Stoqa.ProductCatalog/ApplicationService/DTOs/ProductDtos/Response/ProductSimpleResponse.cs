@@ -1,4 +1,4 @@
-using Stoqa.ProductCatalog.ApplicationService.DTOs.PackagingCompositionDtos.Response;
+
 
 namespace Stoqa.ProductCatalog.ApplicationService.DTOs.ProductDtos.Response;
 
@@ -10,6 +10,4 @@ public sealed class ProductSimpleResponse
     public bool Active { get; init; }
     public required string Description { get; init; }
     public string? Code { get; init; }
-
-    public List<PackagingCompositionSimpleResponse> PackagingCompositionSimpleResponse { get; set; } = [];
 }

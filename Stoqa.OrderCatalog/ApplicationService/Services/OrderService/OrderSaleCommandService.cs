@@ -8,6 +8,7 @@ using Stoqa.OrderCatalog.Domain.Extensions;
 using Stoqa.OrderCatalog.Domain.Interface;
 using Stoqa.OrderCatalog.Infraestrutura.Interfaces.Repository;
 
+
 namespace Stoqa.OrderCatalog.ApplicationService.Services.OrderService;
 
 public sealed class OrderSaleCommandService(
@@ -30,7 +31,7 @@ public sealed class OrderSaleCommandService(
         return await orderRepository.SaveAsync(order);
     }
 
-    public async Task<bool> UpdateConferenceStatus(long orderId)
+    public async Task<bool> UpdateConferenceStatusAsync(long orderId)
     {
         var confirmUpdate = await orderRepository.UpdateAsync(o
             => o.Id == orderId, EOrderStatus.Conference);
@@ -42,7 +43,7 @@ public sealed class OrderSaleCommandService(
 
         await PublishingOrder(orderId);
 
-        return true;
+        return confirmUpdate;
     }
 
     private async Task PublishingOrder(long orderId)
@@ -51,7 +52,6 @@ public sealed class OrderSaleCommandService(
             o => o.Include(s => s.Sale)
                 .Include(po => po.ProductOrders)!);
 
-        var message = orderMapper.DomainToDtoResponse(order!);
-        await orderInventoryPublisher.PublishOrder(message);
+        await orderInventoryPublisher.PublishOrder(orderMapper.DomainToDtoResponse(order!));
     }
 }

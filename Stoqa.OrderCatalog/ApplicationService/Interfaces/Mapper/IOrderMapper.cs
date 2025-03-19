@@ -7,4 +7,5 @@ public interface IOrderMapper
 {
     Orders DtoRegisterToDomain(OrderSaleRegisterRequest orderSaleRegisterRequest);
     OrderInventoryMessage DomainToDtoResponse(Orders order);
+    OrderConferenceResponse DomainToConferenceDtoResponse(Orders order);
 }

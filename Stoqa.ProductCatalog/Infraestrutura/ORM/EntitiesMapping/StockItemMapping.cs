@@ -27,10 +27,15 @@ public sealed class StockItemMapping : BaseMapping, IEntityTypeConfiguration<Sto
             .HasColumnName("quantity")
             .HasColumnOrder(3);
 
+        builder.Property(pc => pc.QuantityReserved)
+            .HasColumnType("int")
+            .HasColumnName("quantity_reserved")
+            .HasColumnOrder(4);
+
         builder.Property(pc => pc.DepositId)
             .HasColumnType("bigint")
             .HasColumnName("deposit_id")
-            .HasColumnOrder(4);
+            .HasColumnOrder(5);
 
         builder.HasOne(p => p.Product)
             .WithOne()

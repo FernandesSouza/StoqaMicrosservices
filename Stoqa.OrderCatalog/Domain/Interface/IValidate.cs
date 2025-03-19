@@ -1,4 +1,4 @@
-using Stoqa.ProductCatalog.Domain.Handlers.ValidationHandler;
+
 using ValidationResponse = Stoqa.OrderCatalog.Domain.Handlers.ValidationHandler.ValidationResponse;
 
 namespace Stoqa.OrderCatalog.Domain.Interface;

@@ -4,25 +4,18 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Stoqa.ProductCatalog.ApplicationService.DTOs.RabbitDtos;
 using Stoqa.ProductCatalog.ApplicationService.RabbitMqService.Constants;
+using Stoqa.ProductCatalog.Infraestrutura.Interfaces.RepositoryContracts;
 
 namespace Stoqa.ProductCatalog.ApplicationService.RabbitMqService.Consumers;
 
-public class OrderConsumer : BackgroundService
+public class OrderConsumer(
+    IChannel channel,
+    IServiceScopeFactory scopeFactory
+) : BackgroundService
 {
-    private IChannel _channel;
-    private ILogger<OrderConsumer> _logger;
-
-    public OrderConsumer(
-        IChannel channel,
-        ILogger<OrderConsumer> logger)
-    {
-        _channel = channel;
-        _logger = logger;
-    }
-
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var consumer = new AsyncEventingBasicConsumer(_channel);
+        var consumer = new AsyncEventingBasicConsumer(channel);
 
         consumer.ReceivedAsync += async (_, eventArgs) =>
         {
@@ -31,10 +24,10 @@ public class OrderConsumer : BackgroundService
             var @event = JsonConvert.DeserializeObject<OrderInventoryMessage>(contentString);
 
             await ProcessMessage(@event!);
-            await _channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
+            await channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
         };
 
-        _channel.BasicConsumeAsync(
+        channel.BasicConsumeAsync(
             RabbitCatalogNames.QueueNameConference,
             false, consumer,
             cancellationToken: stoppingToken);
@@ -42,10 +35,17 @@ public class OrderConsumer : BackgroundService
         return Task.CompletedTask;
     }
 
-    //Falta logica do que fazer com a ordem
-    private Task ProcessMessage(OrderInventoryMessage @event)
+    private async Task ProcessMessage(OrderInventoryMessage @event)
     {
-       _logger.LogInformation(@event.Code);
-       return Task.CompletedTask;
+        using var scope = scopeFactory.CreateScope();
+        var stockItem = scope.ServiceProvider.GetRequiredService<IStockItemRepository>();
+
+        if (@event.ProductOrders != null)
+        {
+            foreach (var po in @event.ProductOrders)
+            {
+                await stockItem.UpdateAsync(st => st.ProductId == po.ProductId, po.QuantityOrdered);
+            }
+        }
     }
 }
