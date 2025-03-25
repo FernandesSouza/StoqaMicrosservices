@@ -8,8 +8,6 @@ O **Stoqa** é um projeto de estudo voltado para entender os conceitos de micros
 
 - **Unit of Work (UoW)**
 - **Notification Pattern**
-- **Code First**
-- **Migrations**
 - **Mensageria com RabbitMQ**
 
 A arquitetura do projeto **não segue o padrão de eventos**, pois o foco é explorar outras abordagens fundamentais em microsserviços.
@@ -49,46 +47,40 @@ O projeto é dividido em diferentes microsserviços, cada um responsável por um
 Antes de executar o projeto, certifique-se de ter os seguintes componentes instalados:
 
 ✅ **.NET 8 SDK**  
-✅ **Docker** *(para rodar RabbitMQ e SQL Server)*  
+✅ **Docker** *(para rodar RabbitMQ, SQL Server, Redis e as APIs)*  
 ✅ **SQL Server** *(caso prefira rodar localmente)*  
 ✅ **RabbitMQ**  
 
-### 📌 Rodando Banco de Dados e Mensageria
+### 📌 Rodando o Sistema com Docker Compose
 
-Se estiver usando **Docker**, pode subir os serviços necessários com o seguinte comando:
+O projeto já inclui um arquivo `docker-compose.yml` para facilitar a inicialização de todos os serviços. Basta executar o comando:
 
 ```sh
 docker-compose up -d
 ```
 
-Caso não tenha um arquivo `docker-compose.yml`, você pode iniciar os serviços manualmente:
+Isso irá iniciar automaticamente:
+
+✅ **RabbitMQ**  
+✅ **SQL Server**  
+✅ **Todos os Microsserviços (APIs)**  
+
+Caso precise reiniciar ou parar os serviços:
 
 ```sh
-# Subir o RabbitMQ
-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
+# Para parar todos os serviços
+docker-compose down
 
-# Subir o SQL Server
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong!Passw0rd' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+# Para reiniciar
+docker-compose up -d --build
 ```
-
-### 📌 Executando os Microsserviços
-
-Cada serviço pode ser executado individualmente:
-
-```sh
-cd Stoqa.Product && dotnet run
-cd ../Stoqa.Order && dotnet run
-cd ../Stoqa.Managment && dotnet run
-cd ../Stoqa.Identity && dotnet run
-```
-
 ---
 
 ## 🔥 Próximos Passos
 
 - ✅ Implementar **testes unitários e de integração**  
-- ✅ Adicionar **microsserviço de pagamento**  
-- ✅ Implementar o **fluxo de conferência**  
+- ✅ Adicionar **logs com Serilog**  
+- ✅ Melhorar a **observabilidade com OpenTelemetry**  
 - ✅ Implementar um **API Gateway com YARP**  
 
 ---
@@ -97,5 +89,3 @@ cd ../Stoqa.Identity && dotnet run
 Este é um projeto de estudo, mas se quiser contribuir, fique à vontade para abrir **issues** e **pull requests**! 
 
 💡 **Sugestões são bem-vindas!**
-
-
