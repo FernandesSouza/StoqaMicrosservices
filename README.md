@@ -88,7 +88,7 @@ cd ../Stoqa.Identity && dotnet run
 
 - ✅ Implementar **testes unitários e de integração**  
 - ✅ Adicionar **microsserviço de pagamento**  
-- ✅ Melhorar a **fluxo de conferência**  
+- ✅ Implementar o **fluxo de conferência**  
 - ✅ Implementar um **API Gateway com YARP**  
 
 ---
@@ -98,12 +98,4 @@ Este é um projeto de estudo, mas se quiser contribuir, fique à vontade para ab
 
 💡 **Sugestões são bem-vindas!**
 
----
-
-## 📜 Licença
-Este projeto está sob a licença **MIT**. Sinta-se à vontade para usá-lo e modificá-lo conforme necessário. 
-
----
-
-🚀 **Vamos construir juntos!**
 
