@@ -79,9 +79,10 @@ docker-compose up -d --build
 ## 🔥 Próximos Passos
 
 - ✅ Implementar **testes unitários e de integração**  
-- ✅ Adicionar **logs com Serilog**  
-- ✅ Melhorar a **observabilidade com OpenTelemetry**  
-- ✅ Implementar um **API Gateway com YARP**  
+- ✅ Implementar **microsserviço de pagamento**   
+- ✅ Implementar um **API Gateway com YARP**
+- ✅ Implementar um **microsserviço de autenticação**
+- ✅ Adicionat **integração com envio de email**    
 
 ---
 
