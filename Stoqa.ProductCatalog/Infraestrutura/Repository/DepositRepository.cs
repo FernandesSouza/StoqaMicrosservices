@@ -18,7 +18,7 @@ public sealed class DepositRepository(
         return await SaveInDataBaseAsync();
     }
 
-    public async Task<Deposit?> FindByIdAsync(
+    public async Task<Deposit?> FindByPredicateAsync(
         Expression<Func<Deposit, bool>> predicate,
         Func<IQueryable<Deposit>, IIncludableQueryable<Deposit, object>>? include = null,
         bool toQuery = false)

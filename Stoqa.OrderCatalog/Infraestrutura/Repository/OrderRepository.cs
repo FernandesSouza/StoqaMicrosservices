@@ -23,10 +23,10 @@ public sealed class OrderRepository(
 
     public async Task<bool> UpdateAsync(Expression<Func<Orders, bool>> predicate, EOrderStatus status)
     {
-        var resul = await DbSetContext.Where(predicate)
+        var result = await DbSetContext.Where(predicate)
             .ExecuteUpdateAsync(setter => setter.SetProperty(o => o.Status, status)) >= StandardQuantity;
 
-        return resul;
+        return result;
     }
 
     public async Task<Orders?> FindByPredicateAsync(

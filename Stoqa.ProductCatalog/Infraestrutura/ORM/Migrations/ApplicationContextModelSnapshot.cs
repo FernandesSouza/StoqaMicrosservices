@@ -67,6 +67,11 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                         .HasColumnName("create_date")
                         .HasColumnOrder(2);
 
+                    b.Property<long?>("OrderId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("order_id")
+                        .HasColumnOrder(5);
+
                     b.Property<long>("ProductId")
                         .HasColumnType("bigint")
                         .HasColumnName("product_id")
@@ -83,9 +88,16 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                         .HasColumnName("status_item")
                         .HasColumnOrder(3);
 
+                    b.Property<long>("StockItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("stockItem_id")
+                        .HasColumnOrder(6);
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("StockItemId");
 
                     b.ToTable("Item", "Stoqa");
                 });
@@ -184,7 +196,15 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Stoqa.ProductCatalog.Domain.Entities.StockItem", "StockItem")
+                        .WithMany("Items")
+                        .HasForeignKey("StockItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Product");
+
+                    b.Navigation("StockItem");
                 });
 
             modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.StockItem", b =>
@@ -216,6 +236,11 @@ namespace Stoqa.ProductCatalog.Infraestrutura.ORM.Migrations
                     b.Navigation("Items");
 
                     b.Navigation("StockItems");
+                });
+
+            modelBuilder.Entity("Stoqa.ProductCatalog.Domain.Entities.StockItem", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

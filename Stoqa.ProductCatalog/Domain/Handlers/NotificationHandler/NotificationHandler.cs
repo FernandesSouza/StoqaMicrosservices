@@ -6,6 +6,11 @@ public class NotificationHandler : INotficationHandler
 {
     private readonly List<DomainNotification> _notifications;
 
+    public NotificationHandler()
+    {
+        _notifications = new List<DomainNotification>();
+    }
+
     public List<DomainNotification> GetNotifications() => _notifications;
 
     public bool HasNotification() => _notifications.Count > 0;

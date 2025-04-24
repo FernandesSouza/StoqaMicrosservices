@@ -23,6 +23,14 @@ public sealed class ProductValidation : Validate<Product>
 
         RuleFor(p => p.Name)
             .NotEmpty().WithMessage(EMessage.Required.GetDescription().FormatTo("Name"))
-            .Must(name => !string.IsNullOrWhiteSpace(name)).WithMessage("Name não pode conter apenas espaços.");
+            .Must(name => !string.IsNullOrWhiteSpace(name)).WithMessage("Nome não pode conter apenas espaços.");
+
+        RuleFor(p => p.Description)
+            .NotEmpty().WithMessage(EMessage.Required.GetDescription().FormatTo("Description"))
+            .Must(name => !string.IsNullOrWhiteSpace(name)).WithMessage("Nome técnico não pode conter apenas espaços.");
+
+        RuleFor(p => p.Code)
+            .NotEmpty()
+            .WithMessage("Código não pode conter apenas espaços");
     }
 }

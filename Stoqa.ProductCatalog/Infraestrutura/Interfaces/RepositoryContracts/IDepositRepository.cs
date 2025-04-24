@@ -7,7 +7,7 @@ namespace Stoqa.ProductCatalog.Infraestrutura.Interfaces.RepositoryContracts;
 public interface IDepositRepository
 {
     Task<bool> SaveAsync(Deposit deposit);
-    Task<Deposit?> FindByIdAsync(Expression<Func<Deposit, bool>> predicate,
+    Task<Deposit?> FindByPredicateAsync(Expression<Func<Deposit, bool>> predicate,
         Func<IQueryable<Deposit>, IIncludableQueryable<Deposit, object>>? include = null,
         bool toQuery = false);
 }

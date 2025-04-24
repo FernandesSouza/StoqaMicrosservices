@@ -8,7 +8,7 @@ namespace Stoqa.ProductCatalog.Infraestrutura.Interfaces.RepositoryContracts;
 public interface IStockItemRepository
 {
     Task<bool> SaveAsync(StockItem stockItem);
-    Task<bool> UpdateAsync(Expression<Func<StockItem, bool>> predicate, int quantity);
+    Task<bool> UpdateReservedAsync(Expression<Func<StockItem, bool>> predicate, int quantity);
     Task<StockItem?> FindByPredicate(
         Expression<Func<StockItem, bool>> predicate,
         Func<IQueryable<StockItem>, IIncludableQueryable<StockItem, object>>? include = null);
@@ -16,4 +16,5 @@ public interface IStockItemRepository
         PageParams pageParams,
         Expression<Func<StockItem, bool>>? predicate,
         Func<IQueryable<StockItem>, IIncludableQueryable<StockItem, object>>? include = null);
+    Task<bool> ExistAsync(Expression<Func<StockItem, bool>> predicate);
 }

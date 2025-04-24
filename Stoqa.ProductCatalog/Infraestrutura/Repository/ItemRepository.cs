@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Stoqa.ProductCatalog.Domain.Entities;
 using Stoqa.ProductCatalog.Infraestrutura.Interfaces.RepositoryContracts;
@@ -16,10 +17,22 @@ public sealed class ItemRepository(
         return await SaveInDataBaseAsync();
     }
 
+    public async Task<bool> UpdateAsync(Item item)
+    {
+        DbSetContext.Update(item);
+        return await SaveInDataBaseAsync();
+    }
+
     public async Task<List<Item>> FindAllAsync()
     {
         IQueryable<Item> query = DbSetContext;
 
         return await query.ToListAsync();
     }
+
+    public async Task<bool> ExistsAsync(Expression<Func<Item, bool>> predicate) =>
+        await DbSetContext.AnyAsync(predicate);
+
+    public async Task<Item?> FindByPredicateAsync(Expression<Func<Item, bool>> predicate) =>
+        await DbSetContext.FirstOrDefaultAsync(predicate);
 }

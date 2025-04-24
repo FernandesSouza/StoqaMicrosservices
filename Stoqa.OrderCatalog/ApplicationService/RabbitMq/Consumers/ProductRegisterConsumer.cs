@@ -42,7 +42,7 @@ public class ProductRegisterConsumer(
         @event.Id = 0;
         using var scope = scopeFactory.CreateScope();
         var observer = scope.ServiceProvider.GetRequiredService<ProductNotification>();
-    
+
         await observer.NotificationCreateObserversAsync(new ProductEventDto
         {
             ProductTypeEvent = EProductTypeEvent.Created,

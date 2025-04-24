@@ -9,4 +9,5 @@ public sealed class StockItem
     public long DepositId { get; set; }
     public Product Product { get; init; }
     public Deposit Deposit { get; init; }
+    public List<Item> Items { get; set; }
 }

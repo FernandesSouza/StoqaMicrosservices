@@ -16,18 +16,20 @@ public sealed class StockItemRepository(
     : BaseRepository<StockItem>(context), IStockItemRepository
 {
     private const int StandardQuantity = 0;
+
     public async Task<bool> SaveAsync(StockItem stockItem)
     {
         await DbSetContext.AddAsync(stockItem);
         return await SaveInDataBaseAsync();
     }
 
-    public async Task<bool> UpdateAsync(
+    public async Task<bool> UpdateReservedAsync(
         Expression<Func<StockItem, bool>> predicate,
         int quantity)
     {
         var result = await DbSetContext.Where(predicate)
-            .ExecuteUpdateAsync(setter => setter.SetProperty(o => o.QuantityReserved, quantity)) >= StandardQuantity;
+            .ExecuteUpdateAsync(setter =>
+                setter.SetProperty(o => o.QuantityReserved, quantity)) >= StandardQuantity;
 
         return result;
     }
@@ -58,4 +60,6 @@ public sealed class StockItemRepository(
 
         return await paginationQueryService.CreatePaginationAsync(query, pageParams.PageSize, pageParams.PageNumber);
     }
+    public async Task<bool> ExistAsync(Expression<Func<StockItem, bool>> predicate) =>
+        await DbSetContext.AnyAsync(predicate);
 }

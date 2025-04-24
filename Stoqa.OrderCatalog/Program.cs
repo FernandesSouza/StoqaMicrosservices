@@ -31,6 +31,7 @@ builder.Services.AddScoped<ProductNotification>(pn =>
 
 builder.Services.AddInversionOfControlHandler();
 
+//FORÇO A PORTA PARA RODAR DOCKER
 builder.WebHost.ConfigureKestrel(options => { options.ListenAnyIP(5000); });
 
 var app = builder.Build();

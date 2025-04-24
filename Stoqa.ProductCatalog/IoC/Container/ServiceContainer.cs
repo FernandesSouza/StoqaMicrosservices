@@ -15,5 +15,8 @@ public static class ServiceContainer
             .AddScoped<IProductSyncService, ProductSyncService>()
             .AddScoped<IStockItemCommandService, StockItemCommandService>()
             .AddScoped<IItemCommandService, ItemCommandService>()
-            .AddScoped<IDepositCommandService, DepositCommandService>();
+            .AddScoped<IDepositCommandService, DepositCommandService>()
+            .AddScoped<IItemQueryService, ItemQueryService>()
+            .AddScoped<IStockItemQueryService, StockItemQueryService>()
+            .AddScoped<IStockItemFacadeCommandService, StockItemCommandService>();
 }

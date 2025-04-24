@@ -1,4 +1,5 @@
-using Stoqa.ProductCatalog.ApplicationService.DTOs.ItemDtos;
+using Stoqa.ProductCatalog.ApplicationService.DTOs.ItemDtos.Request;
+using Stoqa.ProductCatalog.ApplicationService.DTOs.ItemDtos.Response;
 using Stoqa.ProductCatalog.ApplicationService.Interfaces.MapperContracts;
 using Stoqa.ProductCatalog.Domain.Entities;
 using Stoqa.ProductCatalog.Domain.Enums;
@@ -13,6 +14,17 @@ public sealed class ItemMapper : IItemMapper
             SerialCode = registerRequest.SerialCode,
             ProductId = registerRequest.ProductId,
             StatusItem = EStatusItem.InStock,
-            CreateDate = registerRequest.CreateDate
+            CreateDate = registerRequest.CreateDate,
+            StockItemId = registerRequest.StockItemId
+        };
+
+    public List<ItemSimpleResponse> DomainToSimpleResponse(List<Item> items) =>
+        items.Select(SimpleToListDomain).ToList();
+
+    private ItemSimpleResponse SimpleToListDomain(Item item) =>
+        new()
+        {
+            SerialCode = item.SerialCode,
+            StatusItem = item.StatusItem
         };
 }

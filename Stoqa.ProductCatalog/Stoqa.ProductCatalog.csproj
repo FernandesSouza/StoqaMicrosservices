@@ -41,7 +41,8 @@
 
 
     <ItemGroup>
+      <Folder Include="ApplicationService\Extensions\" />
       <Folder Include="Infraestrutura\ORM\Migrations\" />
     </ItemGroup>
-
+    
 </Project>

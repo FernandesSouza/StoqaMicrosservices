@@ -44,7 +44,7 @@ public class OrderConsumer(
         {
             foreach (var po in @event.ProductOrders)
             {
-                await stockItem.UpdateAsync(st => st.ProductId == po.ProductId, po.QuantityOrdered);
+                await stockItem.UpdateReservedAsync(st => st.ProductId == po.ProductId, po.QuantityOrdered);
             }
         }
     }

@@ -36,11 +36,26 @@ public class ItemMapping : BaseMapping, IEntityTypeConfiguration<Item>
             .IsRequired()
             .HasColumnOrder(4);
 
+        builder.Property(pc => pc.OrderId)
+            .HasColumnType("bigint")
+            .HasColumnName("order_id")
+            .HasColumnOrder(5);
+
+        builder.Property(i => i.StockItemId)
+            .HasColumnType("bigint")
+            .HasColumnName("stockItem_id")
+            .HasColumnOrder(6);
+
+        builder.HasOne(i => i.StockItem)
+            .WithMany(i => i.Items)
+            .HasForeignKey(st => st.StockItemId)
+            .OnDelete(DeleteBehavior.Restrict)
+            .IsRequired();
+
         builder.HasOne(p => p.Product)
             .WithMany(p => p.Items)
             .HasForeignKey(p => p.ProductId)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
-
     }
 }
