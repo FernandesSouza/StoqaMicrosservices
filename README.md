@@ -48,6 +48,7 @@ Antes de executar o projeto, certifique-se de ter os seguintes componentes insta
 ✅ **SQL Server e Postgre** *(caso prefira rodar localmente)*
 ✅ **RabbitMQ**  
 
+
 ### 📌 Rodando o Sistema com Docker Compose
 
 O projeto já inclui um arquivo `docker-compose.yml` para facilitar a inicialização de todos os serviços. Basta executar o comando:
@@ -61,6 +62,7 @@ Isso irá iniciar automaticamente:
 ✅ **RabbitMQ**  
 ✅ **SQL Server e Postgre**
 ✅ **Todos os Microsserviços (APIs)**  
+
 
 Caso precise reiniciar ou parar os serviços:
 
