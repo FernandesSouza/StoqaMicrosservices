@@ -33,10 +33,7 @@ O projeto é dividido em diferentes microsserviços, cada um responsável por um
 ### 📦 Stoqa.Order
 📌 Responsável pelo **gerenciamento de ordens**, incluindo criação, atualização e rastreamento de pedidos.
 
-### 👥 Stoqa.Managment
-📌 Cuida do **gerenciamento de usuários** e suas permissões no sistema.
-
-### 🔐 Stoqa.Identity
+### 🔐 Stoqa.UserAccess
 📌 Serviço de **autenticação e autorização**, utilizando **ASP.NET Identity** para gerenciar credenciais e permissões.
 
 ---
@@ -47,8 +44,9 @@ O projeto é dividido em diferentes microsserviços, cada um responsável por um
 Antes de executar o projeto, certifique-se de ter os seguintes componentes instalados:
 
 ✅ **.NET 8 SDK**  
-✅ **Docker** *(para rodar RabbitMQ, SQL Server, Redis e as APIs)*  
-✅ **SQL Server** *(caso prefira rodar localmente)*  
+✅ **Docker** *(para rodar RabbitMQ, SQL Server, Postgre e as APIs)*  
+✅ **SQL Server** *(caso prefira rodar localmente)*
+✅ **Postgre** *(caso prefira rodar localmente)*  
 ✅ **RabbitMQ**  
 
 ### 📌 Rodando o Sistema com Docker Compose
@@ -81,7 +79,6 @@ docker-compose up -d --build
 - ✅ Implementar **testes unitários e de integração**  
 - ✅ Implementar **microsserviço de pagamento**   
 - ✅ Implementar um **API Gateway com YARP**
-- ✅ Implementar um **microsserviço de autenticação**
 - ✅ Adicionat **integração com envio de email**    
 
 ---
