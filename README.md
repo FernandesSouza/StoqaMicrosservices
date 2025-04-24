@@ -78,7 +78,6 @@ docker-compose up -d --build
 - ✅ Implementar **testes unitários e de integração**  
 - ✅ Implementar **microsserviço de pagamento**   
 - ✅ Implementar um **API Gateway com YARP**
-- ✅ Implementar um **microsserviço de autenticação**
 - ✅ Adicionat **integração com envio de email**    
 
 ---
