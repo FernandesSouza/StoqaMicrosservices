@@ -45,8 +45,7 @@ Antes de executar o projeto, certifique-se de ter os seguintes componentes insta
 
 ✅ **.NET 8 SDK**  
 ✅ **Docker** *(para rodar RabbitMQ, SQL Server, Postgre e as APIs)*  
-✅ **SQL Server** *(caso prefira rodar localmente)*
-✅ **Postgre** *(caso prefira rodar localmente)*  
+✅ **SQL Server e Postgre** *(caso prefira rodar localmente)*
 ✅ **RabbitMQ**  
 
 ### 📌 Rodando o Sistema com Docker Compose
@@ -60,7 +59,7 @@ docker-compose up -d
 Isso irá iniciar automaticamente:
 
 ✅ **RabbitMQ**  
-✅ **SQL Server**  
+✅ **SQL Server e Postgre**
 ✅ **Todos os Microsserviços (APIs)**  
 
 Caso precise reiniciar ou parar os serviços:
