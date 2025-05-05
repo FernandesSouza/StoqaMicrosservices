@@ -25,8 +25,19 @@ public class ProductRegisterConsumer(
             var contentString = Encoding.UTF8.GetString(body);
             var @event = JsonConvert.DeserializeObject<Product>(contentString);
 
-            await ProcessMessage(@event!);
-            await channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
+            try
+            {
+                await ProcessMessage(@event!);
+                await channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
+            }
+            catch
+            {
+                await channel.BasicNackAsync(
+                    eventArgs.DeliveryTag,
+                    false,
+                    requeue: false,
+                    cancellationToken: stoppingToken);
+            }
         };
 
         channel.BasicConsumeAsync(

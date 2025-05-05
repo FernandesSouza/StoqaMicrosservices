@@ -28,22 +28,34 @@ public static class RabbitProductConnection
 
         var channel = await connection.CreateChannelAsync();
 
+
+        var args = new Dictionary<string, object>
+        {
+            ["x-dead-letter-exchange"] = "dlx.exchange",
+            ["x-dead-letter-routing-key"] = "dlq.routingkey"
+        };
+
+        await channel.ExchangeDeclareAsync(exchange: "dlx.exchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);
+        await channel.QueueDeclareAsync(queue: "fila.deadletter", durable: true, exclusive: false, autoDelete: false, arguments: null);
+        await channel.QueueBindAsync(queue: "fila.deadletter", exchange: "dlx.exchange", routingKey: "dlq.routingkey", arguments: null);
+
+
         await channel.ExchangeDeclareAsync(RabbitCatalogNames.ExchangeNameProduct, ExchangeType.Topic);
         await channel.ExchangeDeclareAsync(RabbitCatalogNames.ExchangeName, ExchangeType.Topic);
 
-        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductRegisterSync, true, false);
+        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductRegisterSync, true, false, arguments: args!);
         await channel.QueueBindAsync(RabbitCatalogNames.QueueProductRegisterSync,
             RabbitCatalogNames.ExchangeNameProduct,
-            RabbitCatalogNames.ProductRegisterSyncKey);
+            RabbitCatalogNames.ProductRegisterSyncKey, arguments: args!);
 
-        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductActiveOrActiveSync, true, false);
+        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueProductActiveOrActiveSync, true, false, arguments: args!);
         await channel.QueueBindAsync(RabbitCatalogNames.QueueProductActiveOrActiveSync,
             RabbitCatalogNames.ExchangeNameProduct,
-            RabbitCatalogNames.ProductActiveOrActiveSyncKey);
+            RabbitCatalogNames.ProductActiveOrActiveSyncKey, arguments: args!);
 
-        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueNameConference, true, false);
+        await channel.QueueDeclareAsync(RabbitCatalogNames.QueueNameConference, true, false, arguments: args!);
         await channel.QueueBindAsync(RabbitCatalogNames.QueueNameConference, RabbitCatalogNames.ExchangeName,
-            RabbitCatalogNames.ConferenceKey);
+            RabbitCatalogNames.ConferenceKey, arguments: args!);
 
         services.AddSingleton(channel);
     }

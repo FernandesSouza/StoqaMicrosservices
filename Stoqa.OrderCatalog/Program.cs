@@ -17,7 +17,9 @@ builder.Services.AddSettingsControl(configuration);
 builder.Services.AddSwaggerGen();
 await builder.Services.RabbitFactory(configuration);
 builder.Services.AddScoped<ProductRegisterConsumer>();
+builder.Services.AddScoped<DlqConsumer>();
 builder.Services.AddHostedService<ProductRegisterConsumer>();
+builder.Services.AddHostedService<DlqConsumer>();
 builder.Services.AddScoped<IProductObserver, ProductFactorySyncService>();
 builder.Services.AddScoped<ProductNotification>(pn =>
 {

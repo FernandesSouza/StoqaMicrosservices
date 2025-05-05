@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stoqa.OrderCatalog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d9b7fc06cd930095d7799b35d01d50340ddf734")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8e6e1a2dacb00548da6d952349ffd2d2e9ed3f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stoqa.OrderCatalog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stoqa.OrderCatalog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

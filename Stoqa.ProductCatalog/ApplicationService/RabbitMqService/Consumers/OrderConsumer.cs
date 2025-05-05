@@ -13,7 +13,7 @@ public class OrderConsumer(
     IServiceScopeFactory scopeFactory
 ) : BackgroundService
 {
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var consumer = new AsyncEventingBasicConsumer(channel);
 
@@ -23,16 +23,30 @@ public class OrderConsumer(
             var contentString = Encoding.UTF8.GetString(body);
             var @event = JsonConvert.DeserializeObject<OrderInventoryMessage>(contentString);
 
-            await ProcessMessage(@event!);
-            await channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
+            try
+            {
+                await ProcessMessage(@event!);
+                await channel.BasicAckAsync(eventArgs.DeliveryTag, false, stoppingToken);
+            }
+            catch
+            {
+                await channel.BasicNackAsync(
+                    eventArgs.DeliveryTag,
+                    false,
+                    requeue: false,
+                    cancellationToken: stoppingToken);
+            }
         };
 
-        channel.BasicConsumeAsync(
+        await channel.BasicConsumeAsync(
             RabbitCatalogNames.QueueNameConference,
             false, consumer,
             cancellationToken: stoppingToken);
 
-        return Task.CompletedTask;
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            await Task.Delay(1000, stoppingToken);
+        }
     }
 
     private async Task ProcessMessage(OrderInventoryMessage @event)
